@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="220864e7-fc3e-4305-b6c9-3ef702e1de96" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://bos-ap1-uat:20002/PermissionService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="6b92918b-be2e-4db6-b6ba-dbd4c0e81c80" SourceId="1" SourceUrl="net.tcp://bos-ap1-uat:20002/PermissionService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="956537c5-1cb1-4215-a1f4-e2c649e6400c" SourceId="1" SourceUrl="net.tcp://bos-ap1-uat:20002/PermissionService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="16e8e5ef-01b5-421f-a833-ad86bec3f399" SourceId="1" SourceUrl="net.tcp://bos-ap1-uat:20002/PermissionService/mex" />
+    <MetadataFile FileName="PermissionCore.Model.xsd" MetadataType="Schema" ID="083016b6-903c-4586-b002-bf0a6c710a81" SourceId="1" SourceUrl="net.tcp://bos-ap1-uat:20002/PermissionService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="7f785195-2fa3-46f5-9f1e-00a6d7583120" SourceId="1" SourceUrl="net.tcp://bos-ap1-uat:20002/PermissionService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

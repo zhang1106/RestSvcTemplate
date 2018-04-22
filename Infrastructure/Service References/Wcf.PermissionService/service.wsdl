@@ -1,0 +1,708 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PermissionService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="TcpPermissionEndpoint_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>Sign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256>
+                </sp:Basic256>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict>
+                </sp:Strict>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/PermissionCore.Model" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="PermissionService_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetUserInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetUserInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_CheckUserPermission_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserPermission" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_CheckUserPermission_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetStrategies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStrategies" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetStrategies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStrategiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetPermissionTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionTypes" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetPermissionTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissions" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetSpecialPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecialPermissions" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetSpecialPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecialPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_SaveUserExtensions_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUserExtensions" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_SaveUserExtensions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUserExtensionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_CheckPermission_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPermission" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_CheckPermission_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetAllStrategies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStrategies" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetAllStrategies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStrategiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetReferenceData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReferenceData" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetReferenceData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReferenceDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_ChecktModulePermission_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChecktModulePermission" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_ChecktModulePermission_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChecktModulePermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetTeams_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeams" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetTeams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetTeamRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamRoles" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetTeamRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetMembers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMembers" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetMembers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetPermissionDefs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionDefs" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetPermissionDefs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionDefsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetAllPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPermissions" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetAllPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_SaveTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTeam" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_SaveTeam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_DeleteTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTeam" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_DeleteTeam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_SaveTeamRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTeamRole" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_SaveTeamRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTeamRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_DeleteTeamRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTeamRole" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_DeleteTeamRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTeamRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_SaveTeamMembers_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTeamMembers" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_SaveTeamMembers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTeamMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_SavePermissionDef_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePermissionDef" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_SavePermissionDef_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePermissionDefResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_DeletePermissionDef_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePermissionDef" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_DeletePermissionDef_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePermissionDefResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_SavePermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePermissions" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_SavePermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_DeletePermission_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePermission" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_DeletePermission_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetUserPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPermissions" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetUserPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_RecalculatePermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecalculatePermissions" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_RecalculatePermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecalculatePermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetTeamsAudit_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamsAudit" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetTeamsAudit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeamsAuditResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetRolesAudit_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesAudit" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetRolesAudit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesAuditResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetMembersAudit_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMembersAudit" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetMembersAudit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMembersAuditResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetPermissionDefsAudit_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionDefsAudit" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetPermissionDefsAudit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionDefsAuditResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetPermissionsAudit_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionsAudit" />
+  </wsdl:message>
+  <wsdl:message name="PermissionService_GetPermissionsAudit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionsAuditResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PermissionService">
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetUsers" message="tns:PermissionService_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetUsersResponse" message="tns:PermissionService_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetUserInfo" message="tns:PermissionService_GetUserInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetUserInfoResponse" message="tns:PermissionService_GetUserInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetAllUsers" message="tns:PermissionService_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetAllUsersResponse" message="tns:PermissionService_GetAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserPermission">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/CheckUserPermission" message="tns:PermissionService_CheckUserPermission_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/CheckUserPermissionResponse" message="tns:PermissionService_CheckUserPermission_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStrategies">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetStrategies" message="tns:PermissionService_GetStrategies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetStrategiesResponse" message="tns:PermissionService_GetStrategies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetPermissionTypes" message="tns:PermissionService_GetPermissionTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetPermissionTypesResponse" message="tns:PermissionService_GetPermissionTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissions">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetPermissions" message="tns:PermissionService_GetPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetPermissionsResponse" message="tns:PermissionService_GetPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialPermissions">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetSpecialPermissions" message="tns:PermissionService_GetSpecialPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetSpecialPermissionsResponse" message="tns:PermissionService_GetSpecialPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUserExtensions">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/SaveUserExtensions" message="tns:PermissionService_SaveUserExtensions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/SaveUserExtensionsResponse" message="tns:PermissionService_SaveUserExtensions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckPermission">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/CheckPermission" message="tns:PermissionService_CheckPermission_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/CheckPermissionResponse" message="tns:PermissionService_CheckPermission_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStrategies">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetAllStrategies" message="tns:PermissionService_GetAllStrategies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetAllStrategiesResponse" message="tns:PermissionService_GetAllStrategies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReferenceData">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetReferenceData" message="tns:PermissionService_GetReferenceData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetReferenceDataResponse" message="tns:PermissionService_GetReferenceData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChecktModulePermission">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/ChecktModulePermission" message="tns:PermissionService_ChecktModulePermission_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/ChecktModulePermissionResponse" message="tns:PermissionService_ChecktModulePermission_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeams">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetTeams" message="tns:PermissionService_GetTeams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetTeamsResponse" message="tns:PermissionService_GetTeams_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetTeamRoles" message="tns:PermissionService_GetTeamRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetTeamRolesResponse" message="tns:PermissionService_GetTeamRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMembers">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetMembers" message="tns:PermissionService_GetMembers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetMembersResponse" message="tns:PermissionService_GetMembers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionDefs">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetPermissionDefs" message="tns:PermissionService_GetPermissionDefs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetPermissionDefsResponse" message="tns:PermissionService_GetPermissionDefs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPermissions">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetAllPermissions" message="tns:PermissionService_GetAllPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetAllPermissionsResponse" message="tns:PermissionService_GetAllPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/SaveTeam" message="tns:PermissionService_SaveTeam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/SaveTeamResponse" message="tns:PermissionService_SaveTeam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/DeleteTeam" message="tns:PermissionService_DeleteTeam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/DeleteTeamResponse" message="tns:PermissionService_DeleteTeam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTeamRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/SaveTeamRole" message="tns:PermissionService_SaveTeamRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/SaveTeamRoleResponse" message="tns:PermissionService_SaveTeamRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTeamRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/DeleteTeamRole" message="tns:PermissionService_DeleteTeamRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/DeleteTeamRoleResponse" message="tns:PermissionService_DeleteTeamRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTeamMembers">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/SaveTeamMembers" message="tns:PermissionService_SaveTeamMembers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/SaveTeamMembersResponse" message="tns:PermissionService_SaveTeamMembers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePermissionDef">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/SavePermissionDef" message="tns:PermissionService_SavePermissionDef_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/SavePermissionDefResponse" message="tns:PermissionService_SavePermissionDef_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePermissionDef">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/DeletePermissionDef" message="tns:PermissionService_DeletePermissionDef_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/DeletePermissionDefResponse" message="tns:PermissionService_DeletePermissionDef_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePermissions">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/SavePermissions" message="tns:PermissionService_SavePermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/SavePermissionsResponse" message="tns:PermissionService_SavePermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePermission">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/DeletePermission" message="tns:PermissionService_DeletePermission_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/DeletePermissionResponse" message="tns:PermissionService_DeletePermission_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissions">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetUserPermissions" message="tns:PermissionService_GetUserPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetUserPermissionsResponse" message="tns:PermissionService_GetUserPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecalculatePermissions">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/RecalculatePermissions" message="tns:PermissionService_RecalculatePermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/RecalculatePermissionsResponse" message="tns:PermissionService_RecalculatePermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamsAudit">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetTeamsAudit" message="tns:PermissionService_GetTeamsAudit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetTeamsAuditResponse" message="tns:PermissionService_GetTeamsAudit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRolesAudit">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetRolesAudit" message="tns:PermissionService_GetRolesAudit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetRolesAuditResponse" message="tns:PermissionService_GetRolesAudit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersAudit">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetMembersAudit" message="tns:PermissionService_GetMembersAudit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetMembersAuditResponse" message="tns:PermissionService_GetMembersAudit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionDefsAudit">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetPermissionDefsAudit" message="tns:PermissionService_GetPermissionDefsAudit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetPermissionDefsAuditResponse" message="tns:PermissionService_GetPermissionDefsAudit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionsAudit">
+      <wsdl:input wsaw:Action="http://tempuri.org/PermissionService/GetPermissionsAudit" message="tns:PermissionService_GetPermissionsAudit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PermissionService/GetPermissionsAuditResponse" message="tns:PermissionService_GetPermissionsAudit_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TcpPermissionEndpoint" type="tns:PermissionService">
+    <wsp:PolicyReference URI="#TcpPermissionEndpoint_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetUsers">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserPermission">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/CheckUserPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStrategies">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetStrategies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionTypes">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetPermissionTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissions">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialPermissions">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetSpecialPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUserExtensions">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/SaveUserExtensions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPermission">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/CheckPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStrategies">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetAllStrategies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReferenceData">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetReferenceData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChecktModulePermission">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/ChecktModulePermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeams">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetTeams" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamRoles">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetTeamRoles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMembers">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetMembers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionDefs">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetPermissionDefs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPermissions">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetAllPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveTeam">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/SaveTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTeam">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/DeleteTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveTeamRole">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/SaveTeamRole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTeamRole">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/DeleteTeamRole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveTeamMembers">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/SaveTeamMembers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePermissionDef">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/SavePermissionDef" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePermissionDef">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/DeletePermissionDef" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePermissions">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/SavePermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePermission">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/DeletePermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissions">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetUserPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecalculatePermissions">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/RecalculatePermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamsAudit">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetTeamsAudit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRolesAudit">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetRolesAudit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersAudit">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetMembersAudit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionDefsAudit">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetPermissionDefsAudit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionsAudit">
+      <soap12:operation soapAction="http://tempuri.org/PermissionService/GetPermissionsAudit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PermissionService">
+    <wsdl:port name="TcpPermissionEndpoint" binding="tns:TcpPermissionEndpoint">
+      <soap12:address location="net.tcp://bos-ap1-uat:20002/PermissionService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://bos-ap1-uat:20002/PermissionService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Spn>host/bos-ap1-uat.bam-us.com</Spn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
