@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiDollar.Gateway", "AiDolla
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiDollar.ApiGateway", "ApiGateway\AiDollar.ApiGateway.csproj", "{1317EA69-AB62-4033-B4C3-3997C0A546AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{D3404306-689D-4366-9A7C-B1FE34DE2736}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,8 +43,19 @@ Global
 		{1317EA69-AB62-4033-B4C3-3997C0A546AD}.Prod|Any CPU.Build.0 = Prod|Any CPU
 		{1317EA69-AB62-4033-B4C3-3997C0A546AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1317EA69-AB62-4033-B4C3-3997C0A546AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3404306-689D-4366-9A7C-B1FE34DE2736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3404306-689D-4366-9A7C-B1FE34DE2736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3404306-689D-4366-9A7C-B1FE34DE2736}.Dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3404306-689D-4366-9A7C-B1FE34DE2736}.Dev|Any CPU.Build.0 = Debug|Any CPU
+		{D3404306-689D-4366-9A7C-B1FE34DE2736}.Prod|Any CPU.ActiveCfg = Release|Any CPU
+		{D3404306-689D-4366-9A7C-B1FE34DE2736}.Prod|Any CPU.Build.0 = Release|Any CPU
+		{D3404306-689D-4366-9A7C-B1FE34DE2736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3404306-689D-4366-9A7C-B1FE34DE2736}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4947C238-68CA-4AD1-9A10-14080C51551E}
 	EndGlobalSection
 EndGlobal
