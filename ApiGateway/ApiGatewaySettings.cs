@@ -28,9 +28,9 @@ namespace AiDollar.ApiGateway
         
         public HttpSettings Http { get; } = new HttpSettings();
       
-        public string BamCoreLite
+        public string AiDollarCoreLite
         {
-            get { return GetGlobalValue(() => BamCoreLite); }
+            get { return GetGlobalValue(() => AiDollarCoreLite); }
         }
 
         public string BrainConnectionString
