@@ -15,7 +15,7 @@ namespace AiDollar.ApiGateway.Http.Controller
         [HttpGet]
         public string Get(string hello)
         {
-            return hello + System.DateTime.Today.ToShortDateString();
+            return hello + " " +  System.DateTime.Today.ToShortDateString();
         }
     }
 }
