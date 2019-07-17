@@ -4,18 +4,17 @@ using AiDollar.Infrastructure.Logger;
 namespace AiDollar.ApiGateway.Http.Controller
 {
     public class TestController : ApiController
-    {
-        public TestController()
-        {
-          
-        }
+    { 
         public ILogger Logger { get; set; }
 
         [AllowAnonymous]
         [HttpGet]
-        public string Get(string hello)
+        public string Get()
         {
-            return hello + " " +  System.DateTime.Today.ToShortDateString();
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var version = assembly.GetName().Version;
+            
+            return version.ToString();
         }
     }
 }
