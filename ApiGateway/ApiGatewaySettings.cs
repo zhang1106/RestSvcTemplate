@@ -18,12 +18,17 @@ namespace AiDollar.ApiGateway
 
         public string[] PermissionedApplications
         {
-            get { return GetValue(() => PermissionedApplications, new[] { "PMUI", "OrderGateway" }); }
+            get { return GetValue(() => PermissionedApplications, new[] { "PMUI"}); }
         }
 
         public TimeSpan PermissionRefreshInterval
         {
             get { return GetValue(() => PermissionRefreshInterval, TimeSpan.FromMinutes(30)); }
+        }
+
+        public string Environment
+        {
+            get { return GetValue(() => Environment, GetGlobalValue(() => Environment)); }
         }
         
         public HttpSettings Http { get; } = new HttpSettings();
@@ -31,16 +36,6 @@ namespace AiDollar.ApiGateway
         public string AiDollarCoreLite
         {
             get { return GetGlobalValue(() => AiDollarCoreLite); }
-        }
-
-        public string BrainConnectionString
-        {
-            get { return GetGlobalValue(() => BrainConnectionString); }
-        }
-
-        public string[] OmsServiceUris
-        {
-            get { return GetValue(() => OmsServiceUris); }
         }
     }
 }

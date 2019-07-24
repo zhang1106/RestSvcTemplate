@@ -16,5 +16,14 @@ namespace AiDollar.ApiGateway.Http.Controller
             
             return version.ToString();
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public string GetSettings()
+        {
+            var settings = new ApiGatewaySettings();
+
+            return $"Running in - {settings.Environment}";
+        }
     }
 }
