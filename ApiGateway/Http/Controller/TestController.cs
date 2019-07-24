@@ -23,7 +23,7 @@ namespace AiDollar.ApiGateway.Http.Controller
         {
             var settings = new ApiGatewaySettings();
 
-            return $"Running in - {settings.Environment}";
+            return $"Running in - {settings.Enviornment}";
         }
     }
 }

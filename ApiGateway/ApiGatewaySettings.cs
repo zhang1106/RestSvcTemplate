@@ -26,9 +26,9 @@ namespace AiDollar.ApiGateway
             get { return GetValue(() => PermissionRefreshInterval, TimeSpan.FromMinutes(30)); }
         }
 
-        public string Environment
+        public string Enviornment
         {
-            get {return GetGlobalValue(() => Environment); }
+            get {return GetGlobalValue(() => Enviornment); }
         }
         
         public HttpSettings Http { get; } = new HttpSettings();
