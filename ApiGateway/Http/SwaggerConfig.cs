@@ -15,7 +15,7 @@ namespace AiDollar.ApiGateway.Http
             configuration
                 .EnableSwagger(c =>
                     {
-                        c.SingleApiVersion("v1", "AiDollar.ApiGateway");
+                        c.SingleApiVersion("v1", "Rest Service Api Demo");
                         
                         c.ApiKey("Bearer")
                             .Description("Filling bearer token here")
