@@ -28,7 +28,7 @@ namespace AiDollar.ApiGateway
 
         public string Environment
         {
-            get { return GetValue(() => Environment, GetGlobalValue(() => Environment)); }
+            get {return GetGlobalValue(() => Environment); }
         }
         
         public HttpSettings Http { get; } = new HttpSettings();
